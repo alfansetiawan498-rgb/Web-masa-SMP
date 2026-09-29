@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Album Kenangan Digital - Karya Alfan Setiawan (XI TJKT 1)</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    
+    <style>
+        :root {
+            --bg-dark: #020617;
+            --card-bg: rgba(15, 23, 42, 0.65);
+            --primary: #38bdf8;
+            --primary-glow: rgba(56, 189, 248, 0.4);
+            --secondary: #c084fc;
+            --accent: #f472b6;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: rgba(255, 255, 255, 0.12);
+            --border-glow: rgba(56, 189, 248, 0.35);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding-bottom: 120px;
+            position: relative;
+        }
+
+        /* SUPER DYNAMIC AURORA BACKGROUND */
+        .aurora-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -2;
+            overflow: hidden;
+            background: radial-gradient(circle at 50% 50%, #030712 0%, #02040a 100%);
+        }
+
+        .aurora-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.55;
+            animation: floatAurora 15s ease-in-out infinite alternate;
+        }
+
+        .blob-1 {
+            top: -15%;
+            left: -10%;
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle, #0284c7 0%, rgba(2, 132, 199, 0) 70%);
+        }
+
+        .blob-2 {
+            bottom: -15%;
+            right: -10%;
+            width: 65vw;
+            height: 65vw;
+            background: radial-gradient(circle, #9333ea 0%, rgba(147, 51, 234, 0) 70%);
+            animation-delay: -5s;
+        }
+
+        .blob-3 {
+            top: 35%;
+            left: 25%;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, #db2777 0%, rgba(219, 39, 119, 0) 70%);
+            animation-delay: -10s;
+        }
+
+        .blob-4 {
+            bottom: 20%;
+            left: -10%;
+            width: 40vw;
+            height: 40vw;
+            background: radial-gradient(circle, #0d9488 0%, rgba(13, 148, 136, 0) 70%);
+            animation-delay: -7s;
+        }
+
+        @keyframes floatAurora {
+            0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+            50% { transform: translate(100px, 60px) scale(1.2) rotate(180deg); }
+            100% { transform: translate(-80px, 90px) scale(0.95) rotate(360deg); }
+        }
+
+        /* CURSOR GLOW EFFECT */
+        .cursor-glow {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s, height 0.3s;
+        }
+
+        /* PARTICLES CANVAS */
+        #bgCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* NAVBAR ELEGAN */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 16px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(3, 7, 18, 0.7);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--text-light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--primary);
+            font-size: 1.3rem;
+            filter: drop-shadow(0 0 10px var(--primary));
+        }
+
+        .logo span {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+            text-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 130px 8% 60px;
+            position: relative;
+        }
+
+        .badge {
+            background: rgba(56, 189, 248, 0.12);
+            color: var(--primary);
+            padding: 8px 24px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            border: 1px solid var(--border-glow);
+            box-shadow: 0 0 30px var(--primary-glow);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            backdrop-filter: blur(12px);
+        }
+
+        .hero h1 {
+            font-size: 3.4rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            letter-spacing: -1px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, #38bdf8 0%, #c084fc 50%, #f472b6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            max-width: 650px;
+            margin-bottom: 35px;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            box-shadow: 0 10px 30px var(--primary-glow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(56, 189, 248, 0.5);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-light);
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.25);
+            transform: translateY(-3px);
+        }
+
+        /* STATS BAR */
+        .stats-bar {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            background: var(--card-bg);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-radius: 24px;
+            padding: 28px;
+            margin: -20px 8% 60px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .stat-item { text-align: center; }
+
+        .stat-item h2 {
+            font-size: 2.2rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+
+        .stat-item p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        /* SECTIONS */
+        section { padding: 60px 8%; }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 12px;
+            font-weight: 800;
+        }
+
+        .section-title span {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 45px;
+            font-size: 0.95rem;
+        }
+
+        /* GALERI GRID */
+        .galeri-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 28px;
+        }
+
+        .galeri-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            touch-action: pan-y !important;
+        }
+
+        .galeri-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--border-glow);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 30px var(--primary-glow);
+        }
+
+        .img-container {
+            width: 100%;
+            height: 240px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .galeri-card:hover .img-container img {
+            transform: scale(1.08);
+        }
+
+        .card-info {
+            padding: 22px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: var(--text-light);
+            font-weight: 700;
+        }
+
+        .card-info p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* KESAN & PESAN */
+        .quote-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 28px;
+        }
+
+        .quote-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 32px;
+            border: 1px solid var(--border-color);
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .quote-card:hover {
+            border-color: rgba(56, 189, 248, 0.4);
+            transform: translateY(-6px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 25px var(--primary-glow);
+        }
+
+        .quote-card i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 16px;
+        }
+
+        .quote-card p {
+            font-size: 0.92rem;
+            color: #cbd5e1;
+            line-height: 1.7;
+            margin-bottom: 22px;
+            font-weight: 400;
+        }
+
+        .quote-author {
+            font-size: 0.9rem;
+            font-weight: 800;
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .quote-author i {
+            font-size: 1rem;
+            color: var(--accent);
+            margin-bottom: 0;
+        }
+
+        /* FLOATING MUSIC PLAYER */
+        .music-player-container {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 520px;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid var(--border-glow);
+            border-radius: 30px;
+            padding: 12px 24px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px var(--primary-glow);
+            z-index: 1500;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .music-main-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .music-info {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .music-disc {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+            box-shadow: 0 0 15px var(--primary-glow);
+            animation: rotateDisc 10s linear infinite;
+            animation-play-state: paused;
+        }
+
+        .music-player-container.playing .music-disc {
+            animation-play-state: running;
+        }
+
+        @keyframes rotateDisc {
+            100% { transform: rotate(360deg); }
+        }
+
+        .music-details h4 {
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .music-details p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .music-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .control-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1rem;
+            cursor: pointer;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+        }
+
+        .control-btn:hover { color: var(--primary); }
+
+        .play-btn {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px var(--primary-glow);
+            transition: transform 0.2s ease;
+        }
+
+        .play-btn:hover { transform: scale(1.08); }
+
+        .progress-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .time-text {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            min-width: 32px;
+        }
+
+        .progress-bar-bg {
+            flex: 1;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+        }
+
+        /* MODAL PREVIEW */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(3, 5, 12, 0.92);
+            backdrop-filter: blur(25px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-box {
+            background: var(--card-bg);
+            border: 1px solid var(--border-glow);
+            border-radius: 24px;
+            padding: 20px;
+            max-width: 800px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .modal.show .modal-box {
+            transform: scale(1);
+        }
+
+        .modal-box img {
+            max-width: 100%;
+            max-height: 65vh;
+            border-radius: 16px;
+            object-fit: contain;
+        }
+
+        .modal-desc {
+            text-align: center;
+        }
+
+        .modal-desc h3 {
+            font-size: 1.2rem;
+            color: var(--text-light);
+        }
+
+        .modal-desc p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            color: #fff;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-btn:hover { color: var(--primary); }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: 40px;
+        }
+
+        footer strong {
+            color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .nav-links { display: none; }
+            .stats-bar { margin-top: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- DYNAMIC AURORA NEBULA BACKGROUND -->
+    <div class="aurora-bg">
+        <div class="aurora-blob blob-1"></div>
+        <div class="aurora-blob blob-2"></div>
+        <div class="aurora-blob blob-3"></div>
+        <div class="aurora-blob blob-4"></div>
+    </div>
+
+    <!-- CURSOR GLOW TRACKER -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- CANVAS PARTICLES & CONSTELLATION EFFECT -->
+    <canvas id="bgCanvas"></canvas>
+
+    <!-- NAVBAR -->
+    <header>
+        <a href="#" class="logo">
+            <i class="fa-solid fa-laptop-code"></i> 
+            <span>Alfan Setiawan</span> | XI TJKT 1
+        </a>
+        <ul class="nav-links">
+            <li><a href="#home">Beranda</a></li>
+            <li><a href="#galeri">Galeri</a></li>
+            <li><a href="#pesan">Kesan & Pesan</a></li>
+        </ul>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="badge" data-aos="fade-down">
+            <i class="fa-solid fa-sparkles"></i> Album Kenangan Digital
+        </div>
+        <h1 data-aos="fade-up" data-aos-delay="100">
+            Merawat Kenangan Masa SMP<br><span>SMP Negeri 4 Maluku Tengah</span>
+        </h1>
+        <p data-aos="fade-up" data-aos-delay="200">
+            Setiap lembar foto mencatat tawa, kerja keras, persahabatan, dan jasa mulia para guru yang membentuk kita hingga hari ini.
+        </p>
+        <div class="hero-btns" data-aos="fade-up" data-aos-delay="300">
+            <a href="#galeri" class="btn-primary">Jelajahi Foto</a>
+            <a href="#pesan" class="btn-secondary">Kesan & Pesan</a>
+        </div>
+    </section>
+
+    <!-- STATS BAR -->
+    <div class="stats-bar" data-aos="zoom-in">
+        <div class="stat-item">
+            <h2>15</h2>
+            <p>Momen Kenangan</p>
+        </div>
+        <div class="stat-item">
+            <h2>100%</h2>
+            <p>Keceriaan</p>
+        </div>
+        <div class="stat-item">
+            <h2>Selamanya</h2>
+            <p>Tali Persahabatan</p>
+        </div>
+    </div>
+
+    <!-- GALERI -->
+    <section id="galeri">
+        <h2 class="section-title" data-aos="fade-up">Galeri <span>Momen Indah</span></h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+            Potret jejak langkah keceriaan kita saat mengenakan seragam putih-biru. (Ketuk foto untuk memperbesar)
+        </p>
+        
+        <div class="galeri-grid">
+
+            <!-- FOTO 1 -->
+            <div class="galeri-card" data-aos="fade-up">
+                <div class="img-container">
+                    <img src="https://i.ibb.co.com/RGBK0q7m/IMG-20240805-WA0000.jpg" alt="Kegiatan Bersama">
+                </div>
+                <div class="card-info">
+                    <h3>Foto Pengarahan / Apel di Lapangan</h3>
+                    <p>Duduk rapi di bawah naungan pohon rindang, mendengarkan arahan untuk masa depan yang lebih baik</p>
+                </div>
+            </div>
+
+            <!-- FOTO 2 -->
+            <div class="galeri-card" data-aos="fade-up" data-aos-delay="50">
+                <div class="img-container">
+                    <img src="https://i.ibb.co.com/RTCX8Wm9/IMG-20240812-WA0040.jpg" alt="Momen Putih Biru">
+                </div>
+                <div class="card-info">
+                    <h3>Foto Pose Bersama Teman Sekelas</h3>
+                    <p>Gaya boleh beda, tapi tawa dan kebersamaan kita tetap sama</p>
+                </div>
+            </div>
+
+            <!-- FOTO 3 -->
+            <div class="galeri-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="img-container">
+                    <img src="https://i.ibb.co.com/VWXr5p7h/IMG-20240814-WA0004.jpg" alt="Momen Seragam">
+                </div>
+                <div class="card-info">
+                    <h3>Foto Anggota Pramuka Bersama Pembina</h3>
+                    <p>Satu Pramuka untuk Satu Indonesia: Tangguh, kompak, dan penuh kenangan manis</p>
+                </div>
+            </div>
+
+            <!-- FOTO 4 -->
+            <div class="galeri-card" data-aos="fade-up" data-aos-delay="150">
+                <div class="img-container">
+                    <img src="https://i.ibb.co.com/C5S9KN2t/IMG-20240814-WA0005.jpg" alt="Kisah Sekolah">
+                </div>
+                <div class="card-info">
+                    <h3>Foto Anggota Pramuka Bersama Pembina</h3>
+                    <p>Di bawah naungan pohon dan tenda, kita belajar arti kebersamaan dan kedisiplinan sesungguhnya</p>
+                </div>
+            </div>
+
+            <!-- FOTO 5 -->
+            <div class="galeri-card" data-aos="fade-up">
+                <div class="img-container">
+                    <img src="https://i.ibb.co.com/0yMhPTLc/1000472330.jpg" alt="Foto Angkatan Lengkap">
+                </div>
+                <div class="card-info">
+                    <h3>Foto Acara Makan Bersama</h3>
+                    <p>Sederhana, tapi kenangannya luar biasa. Nikmatnya makan bareng keluarga kedua di sekolah</p>
+                </div>
+            </div>
+
+            <!-- FOTO 6 -->
+            <div class="galeri-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="img-container">
+                    <img src="https://i.ibb.co.com/KzKpcBTM/1000472329.jpg" alt="Gaya Bebas Angkatan">
+                </div>
+                <div class="card-info">
+                    <h3>Foto Acara Makan Bersama</h3>
+                    <p>Bukan cuma soal makanannya, tapi tawa dan kebersamaan di meja ini yang bikin rindu</p>
+                </div>
+            </div>
+
+            <!-- FOTO 7 -->
+            <div class="galeri-card" data-aos="fade-up" data-aos-delay="150">
+                <div class="img-container">
+                    <img src="https://i.ibb.co.com/dwPLSwFg/1000472328.jpg" alt="Kompak di Lapangan">
+                </div>
+                <div class="card-info">
+                    <h3>Foto Baju Adat Tradisional / Seni Budaya</h3>
+                    <p>Melestarikan budaya dengan bangga! Pesona pakaian adat dalam balutan keceriaan masa sekolah</p>
+                </div>
+            </div>
+
+            <!-- FOTO 8 -->
+            <div class="galeri-card" data-aos="fade-up">
+                <div class="img-container">
+                    <img src="https://i.ibb.co.com/0pqxwmLz/1000472327.jpg" alt="Pentas & Busana Adat">
+                </div>
+                <div class="card-info">
+                    <h3>Foto Baju Adat Tradisional / Seni Budaya</h3>
+                    <p>Hari istimewa di mana kita melangkah anggun dan gagah mengenakan warisan budaya bangsa</p>
+                </div>
+            </div>
+
+            <!-- FOTO 9 -->
+            <div class="galeri-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="img-container">
+                    <img src="https://i.ibb.co.com/5WxjFD9G/1000472325.jpg" alt="Kebersamaan Seragam Sekolah">
+                </div>
+                <div class="card-info">
+                    <h3>Foto Ceria di Dalam Kelas</h3>
+                    <p>Dari meja kayu berukir cerita ini, kita merajut persahabatan yang tak terlupakan</p>
+                </div>
+            </div>
+
+            <!-- FOTO 10 -->
+            <div class="galeri-card" data-aos="fade-up" data-aos-delay="150">
+                <div class="img-container">
+                    <img src="https://i.ibb.co.com/9m69FD7r/1000472323.jpg" alt="Makan Bersama di Teras">
+                </div>
+                <div class="card-info">
+                    <h3>Foto Kumpul dan Bercanda di Belakang Kelas</h3>
+                    <p>Sudut kelas yang paling bising dengan tawa dan cerita konyol kita</p>
+                </div>
+            </div>
+
+            <!-- FOTO 11 -->
+            <div class="galeri-card" data-aos="fade-up">
+                <div class="img-container">
+                    <img src="https://i.ibb.co.com/4nfSpG6r/1000472322.jpg" alt="Momen Spesial Teras">
+                </div>
+                <div class="card-info">
+                    <h3>Foto Lesehan Santai di Teras Sekolah</h3>
+                    <p>Canda tawa di selasar kelas saat jam istirahat sekolah.</p>
+                </div>
+            </div>
+
+            <!-- FOTO 12 -->
+            <div class="galeri-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="img-container">
+                    <img src="https://i.ibb.co.com/WWLtMLGx/1000472321.jpg" alt="Syukuran & Makan Kelas">
+                </div>
+                <div class="card-info">
+                    <h3>Foto Makan Bersama di Teras Kelas</h3>
+                    <p>Nikmatnya kebersamaan makan bersama dengan hidangan spesial</p>
+                </div>
+            </div>
+
+            <!-- FOTO 13 -->
+            <div class="galeri-card" data-aos="fade-up" data-aos-delay="150">
+                <div class="img-container">
+                    <img src="https://i.ibb.co.com/93WhCnfS/1000472334.jpg" alt="Canda Tawa di Ruang Kelas">
+                </div>
+                <div class="card-info">
+                    <h3>Foto Angkatan Lengkap Siswa-Siswi di Lapangan</h3>
+                    <p>Satu angkatan, sejuta cerita. Terima kasih telah menjadi bagian terbaik dari masa SMP-ku!</p>
+                </div>
+            </div>
+
+            <!-- FOTO 14 -->
+            <div class="galeri-card" data-aos="fade-up">
+                <div class="img-container">
+                    <img src="https://i.ibb.co.com/qFsmXH9R/1000472332.jpg" alt="Kumpul Sudut Ruangan">
+                </div>
+                <div class="card-info">
+                    <h3>Foto Bersama Siswa Putra Satu Angkatan</h3>
+                    <p>Di balik seragam putih-biru ini, ada mimpi dan kenangan indah yang kita ukir bersama</p>
+                </div>
+            </div>
+
+            <!-- FOTO 15 -->
+            <div class="galeri-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="img-container">
+                    <img src="https://i.ibb.co.com/Y4Sn35sq/IMG-20250602-WA0023.jpg" alt="Aktivitas Pembelajaran & Diskusi">
+                </div>
+                <div class="card-info">
+                    <h3>Foto Perpisahan / Kelulusan Bersama Guru</h3>
+                    <p>Terima kasih Bapak dan Ibu Guru atas bimbingan dan kesabarannya. Langkah awal kami dimulai dari sini</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- KESAN & PESAN MENYENTUH HATI -->
+    <section id="pesan">
+        <h2 class="section-title" data-aos="fade-up">Ungkapan Hati & <span>Apresiasi</span></h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+            Terima kasih mendalam untuk setiap jiwa yang mewarnai perjalanan kita di SMP Negeri 4 Maluku Tengah.
+        </p>
+        
+        <div class="quote-grid">
+            
+            <!-- UNTUK GURU -->
+            <div class="quote-card" data-aos="fade-up">
+                <i class="fa-solid fa-chalkboard-user"></i>
+                <p><strong>Kesan:</strong> Terima kasih yang tak terhingga untuk Bapak dan Ibu Guru. Kesabaran Bapak/Ibu membimbing kami yang sering kali tidak penurut adalah bukti nyata dari keagungan hati seorang pendidik.<br><br>
+                <strong>Pesan:</strong> Semoga kebaikan, ilmu, dan keringat yang Bapak/Ibu curahkan menjadi amal jariyah yang abadi. Doakan kami agar bisa tumbuh menjadi manusia yang membanggakan seperti yang selalu Bapak/Ibu impikan.</p>
+                <div class="quote-author"><i class="fa-solid fa-heart"></i> Untuk Bapak & Ibu Guru Tercinta</div>
+            </div>
+
+            <!-- UNTUK TEMAN-TEMAN -->
+            <div class="quote-card" data-aos="fade-up" data-aos-delay="100">
+                <i class="fa-solid fa-user-group"></i>
+                <p><strong>Kesan:</strong> Terima kasih telah menjadi bagian dari masa muda yang paling indah. Setiap riuh tawa di kelas, momen berbagi bekal, hingga kekonyolan yang kita lakukan bersama akan selalu menjadi rindu paling hangat.<br><br>
+                <strong>Pesan:</strong> Walaupun jalan hidup akan membawa kita ke arah yang berbeda, jangan pernah saling melupakan. Tetaplah berjuang meraih impian masing-masing dan ingatlah bahwa kita pernah berjuang bersama di bawah seragam putih-biru.</p>
+                <div class="quote-author"><i class="fa-solid fa-heart"></i> Untuk Teman-Teman Seperjuangan</div>
+            </div>
+
+            <!-- UNTUK STAF SEKOLAH -->
+            <div class="quote-card" data-aos="fade-up" data-aos-delay="200">
+                <i class="fa-solid fa-hands-holding-circle"></i>
+                <p><strong>Kesan:</strong> Apresiasi setinggi-tingginya untuk seluruh staf tata usaha, petugas kebersihan, dan keamanan sekolah. Senyum ramah dan ketulusan kalian menjaga kenyamanan sekolah ini adalah pahlawan tak terlihat di balik keseharian kami.<br><br>
+                <strong>Pesan:</strong> Terima kasih atas kerja keras, kehangatan, dan kepedulian yang selalu menyambut kami setiap pagi. Semoga kebaikan kalian selalu dibalas dengan kesehatan dan kebahagiaan yang berlimpah.</p>
+                <div class="quote-author"><i class="fa-solid fa-heart"></i> Untuk Seluruh Staf & Pengabdi Sekolah</div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FLOATING MUSIC PLAYER -->
+    <div class="music-player-container" id="musicPlayer">
+        <div class="music-main-row">
+            <div class="music-info">
+                <div class="music-disc">
+                    <i class="fa-solid fa-compact-disc"></i>
+                </div>
+                <div class="music-details">
+                    <h4>Kisah Kasih di Sekolah</h4>
+                    <p>Lagu Kenangan Masa SMP</p>
+                </div>
+            </div>
+            
+            <div class="music-controls">
+                <button class="control-btn" id="muteBtn" onclick="toggleMute()" title="Mute/Unmute">
+                    <i class="fa-solid fa-volume-high" id="muteIcon"></i>
+                </button>
+                <button class="play-btn" id="playBtn" onclick="toggleMusic()" title="Play/Pause">
+                    <i class="fa-solid fa-play" id="playIcon"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="progress-container">
+            <span class="time-text" id="currentTime">0:00</span>
+            <div class="progress-bar-bg" onclick="setSeek(event)">
+                <div class="progress-bar-fill" id="progressBarFill"></div>
+            </div>
+            <span class="time-text" id="durationTime">0:00</span>
+        </div>
+    </div>
+
+    <!-- ELEMEN AUDIO -->
+    <audio id="bgMusic" loop autoplay>
+        <source src="kisah kasih di sekolah.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- MODAL PREVIEW GAMBAR -->
+    <div class="modal" id="photoModal" onclick="closeModal(event)">
+        <span class="close-btn">&times;</span>
+        <div class="modal-box" onclick="event.stopPropagation()">
+            <img id="modalImg" src="" alt="Preview">
+            <div class="modal-desc">
+                <h3 id="modalTitle">Judul Foto</h3>
+                <p id="modalSub">Deskripsi Foto</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>Dibuat Oleh: <strong>Alfan Setiawan</strong> | Kelas <strong>XI TJKT 1</strong></p>
+        <p>Siswa <strong>SMK Negeri 1 Maluku Tengah</strong></p>
+        <p style="margin-top: 8px; opacity: 0.7;">&copy; 2026 SMP Negeri 4 Maluku Tengah. Merawat Kenangan Masa Putih-Biru.</p>
+    </footer>
+
+    <!-- SCRIPT LIBRARIES -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        // Init AOS
+        AOS.init({ once: true, duration: 800, easing: 'ease-out' });
+
+        // CURSOR GLOW TRACKER
+        const cursorGlow = document.getElementById('cursorGlow');
+        window.addEventListener('mousemove', (e) => {
+            cursorGlow.style.left = e.clientX + 'px';
+            cursorGlow.style.top = e.clientY + 'px';
+        });
+
+        // CONSTELLATION & GLOW PARTICLES CANVAS
+        const canvas = document.getElementById('bgCanvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2.5 + 1;
+                this.speedX = (Math.random() - 0.5) * 0.6;
+                this.speedY = (Math.random() - 0.5) * 0.6;
+                this.color = Math.random() > 0.5 ? 'rgba(56, 189, 248, ' : 'rgba(192, 132, 252, ';
+                this.opacity = Math.random() * 0.6 + 0.3;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+            }
+            draw() {
+                ctx.fillStyle = this.color + this.opacity + ')';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            const count = Math.floor((canvas.width * canvas.height) / 15000);
+            for (let i = 0; i < count; i++) {
+                particles.push(new Particle());
+            }
+        }
+        initParticles();
+
+        function connectParticles() {
+            for (let a = 0; a < particles.length; a++) {
+                for (let b = a; b < particles.length; b++) {
+                    let dx = particles[a].x - particles[b].x;
+                    let dy = particles[a].y - particles[b].y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < 120) {
+                        let opacity = 1 - (distance / 120);
+                        ctx.strokeStyle = `rgba(56, 189, 248, ${opacity * 0.2})`;
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[a].x, particles[a].y);
+                        ctx.lineTo(particles[b].x, particles[b].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animateCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            connectParticles();
+            requestAnimationFrame(animateCanvas);
+        }
+        animateCanvas();
+
+        // LOGIKA KETUK FOTO
+        document.querySelectorAll('.galeri-card').forEach((card) => {
+            let startX = 0, startY = 0;
+
+            card.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
+            }, { passive: true });
+
+            card.addEventListener('touchend', (e) => {
+                const endX = e.changedTouches[0].clientX;
+                const endY = e.changedTouches[0].clientY;
+                if (Math.abs(endX - startX) < 8 && Math.abs(endY - startY) < 8) {
+                    openModal(card);
+                }
+            });
+
+            card.addEventListener('click', (e) => {
+                if (e.pointerType === 'mouse') openModal(card);
+            });
+        });
+
+        // MODAL LIGHTBOX
+        function openModal(cardElement) {
+            const modal = document.getElementById('photoModal');
+            document.getElementById('modalImg').src = cardElement.querySelector('img').src;
+            document.getElementById('modalTitle').textContent = cardElement.querySelector('h3').textContent;
+            document.getElementById('modalSub').textContent = cardElement.querySelector('p').textContent;
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('photoModal').classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+
+        // PEMUTAR MUSIK
+        const music = document.getElementById('bgMusic');
+        const playIcon = document.getElementById('playIcon');
+        const musicPlayer = document.getElementById('musicPlayer');
+        const muteIcon = document.getElementById('muteIcon');
+        const progressBarFill = document.getElementById('progressBarFill');
+
+        function startAudio() {
+            music.play().then(() => {
+                playIcon.className = 'fa-solid fa-pause';
+                musicPlayer.classList.add('playing');
+            }).catch(error => {
+                console.log("Autoplay dicegah oleh browser, menunggu interaksi pengguna.");
+            });
+        }
+
+        window.addEventListener('DOMContentLoaded', startAudio);
+
+        const enableAudioOnInteraction = () => {
+            if (music.paused) {
+                startAudio();
+            }
+            window.removeEventListener('click', enableAudioOnInteraction);
+            window.removeEventListener('touchstart', enableAudioOnInteraction);
+            window.removeEventListener('scroll', enableAudioOnInteraction);
+        };
+
+        window.addEventListener('click', enableAudioOnInteraction);
+        window.addEventListener('touchstart', enableAudioOnInteraction);
+        window.addEventListener('scroll', enableAudioOnInteraction);
+
+        function toggleMusic() {
+            if (music.paused) {
+                music.play();
+                playIcon.className = 'fa-solid fa-pause';
+                musicPlayer.classList.add('playing');
+            } else {
+                music.pause();
+                playIcon.className = 'fa-solid fa-play';
+                musicPlayer.classList.remove('playing');
+            }
+        }
+
+        function toggleMute() {
+            music.muted = !music.muted;
+            muteIcon.className = music.muted ? 'fa-solid fa-volume-xmark' : 'fa-solid fa-volume-high';
+        }
+
+        function formatTime(sec) {
+            if (isNaN(sec)) return "0:00";
+            const m = Math.floor(sec / 60);
+            const s = Math.floor(sec % 60);
+            return `${m}:${s < 10 ? '0' : ''}${s}`;
+        }
+
+        music.addEventListener('timeupdate', () => {
+            if (music.duration) {
+                const percent = (music.currentTime / music.duration) * 100;
+                progressBarFill.style.width = `${percent}%`;
+                document.getElementById('currentTime').textContent = formatTime(music.currentTime);
+                document.getElementById('durationTime').textContent = formatTime(music.duration);
+            }
+        });
+
+        function setSeek(e) {
+            const width = e.currentTarget.clientWidth;
+            const clickX = e.offsetX;
+            if (music.duration) {
+                music.currentTime = (clickX / width) * music.duration;
+            }
+        }
+    </script>
+</body>
+</html>
