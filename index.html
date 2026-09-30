@@ -923,7 +923,7 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 12px;
-            margin-bottom: 24px;
+            margin-bottom: 0; /* kotak URL dihapus, jadi margin bawah 0 */
             position: relative;
             z-index: 1;
         }
@@ -980,6 +980,13 @@
             transform: scale(1.08) rotate(-4deg);
         }
 
+        /* SVG X logo spesifik */
+        .share-btn-icon svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
         .share-btn-text {
             flex: 1;
             min-width: 0;
@@ -1034,65 +1041,7 @@
         .share-grid-btn.tw:hover { border-color: rgba(255, 255, 255, 0.25); box-shadow: 0 10px 25px rgba(255, 255, 255, 0.08); }
         .share-grid-btn.copy:hover { border-color: rgba(56, 189, 248, 0.5); box-shadow: 0 10px 25px rgba(56, 189, 248, 0.15); }
 
-        .share-url-box {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 16px;
-            background: rgba(0, 0, 0, 0.25);
-            border: 1px dashed var(--border-color);
-            border-radius: 14px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .share-url-box > i.fa-globe {
-            color: var(--primary);
-            font-size: 0.9rem;
-            flex-shrink: 0;
-        }
-
-        .share-url-text {
-            flex: 1;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            font-family: 'Courier New', monospace;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            min-width: 0;
-        }
-
-        .share-url-copy {
-            background: rgba(56, 189, 248, 0.1);
-            border: 1px solid rgba(56, 189, 248, 0.3);
-            color: var(--primary);
-            width: 32px;
-            height: 32px;
-            border-radius: 10px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.85rem;
-            transition: background 0.25s ease, transform 0.2s ease;
-            flex-shrink: 0;
-            font-family: inherit;
-        }
-
-        .share-url-copy:hover {
-            background: rgba(56, 189, 248, 0.2);
-            transform: scale(1.08);
-        }
-
-        .share-url-copy:active {
-            transform: scale(0.95);
-        }
-
-        .share-url-copy:focus-visible {
-            outline: 2px solid var(--primary);
-            outline-offset: 2px;
-        }
+        /* Kotak URL dihapus total */
 
         @media (max-width: 600px) {
             .share-card { padding: 22px 18px; border-radius: 22px; }
@@ -1102,7 +1051,6 @@
             .share-card-title p { font-size: 0.78rem; }
             .share-btn-text strong { font-size: 0.85rem; }
             .share-btn-text span { font-size: 0.68rem; }
-            .share-url-text { font-size: 0.72rem; }
         }
 
         /* ============ MUSIC PLAYER ============ */
@@ -1901,9 +1849,12 @@
                         <i class="fa-solid fa-arrow-up-right-from-square share-btn-arrow"></i>
                     </button>
 
+                    <!-- X/Twitter dengan logo SVG resmi X -->
                     <button class="share-grid-btn tw" id="shareTw" aria-label="Bagikan ke X/Twitter">
                         <div class="share-btn-icon">
-                            <i class="fa-brands fa-x-twitter"></i>
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                            </svg>
                         </div>
                         <div class="share-btn-text">
                             <strong>X / Twitter</strong>
@@ -1923,14 +1874,7 @@
                         <i class="fa-solid fa-copy share-btn-arrow"></i>
                     </button>
                 </div>
-
-                <div class="share-url-box">
-                    <i class="fa-solid fa-globe"></i>
-                    <span class="share-url-text" id="shareUrlText">Memuat URL...</span>
-                    <button class="share-url-copy" id="shareUrlCopyBtn" aria-label="Salin URL">
-                        <i class="fa-solid fa-copy"></i>
-                    </button>
-                </div>
+                <!-- Kotak URL telah dihapus sesuai permintaan -->
             </div>
         </div>
     </section>
@@ -2001,7 +1945,6 @@
         <p>Siswa <strong>SMK Negeri 1 Maluku Tengah</strong></p>
         <p class="footer-tagline">
             Album kenangan masa SMP (2021–2024) di SMP Negeri 4 Maluku Tengah.
-            &copy; 2025 &mdash; Merawat Kenangan Masa Putih-Biru.
         </p>
     </footer>
 
@@ -2600,9 +2543,6 @@
             const shareUrl = window.location.href;
             const shareText = 'Lihat album kenangan masa SMP-ku! Karya Alfan Setiawan (XI TJKT 1).';
 
-            const urlTextEl = document.getElementById('shareUrlText');
-            if (urlTextEl) urlTextEl.textContent = shareUrl;
-
             document.getElementById('shareWa').addEventListener('click', () => {
                 const url = `https://wa.me/?text=${encodeURIComponent(shareText + ' ' + shareUrl)}`;
                 window.open(url, '_blank', 'noopener');
@@ -2638,9 +2578,6 @@
             }
 
             document.getElementById('shareCopy').addEventListener('click', copyUrl);
-
-            const copyBtn = document.getElementById('shareUrlCopyBtn');
-            if (copyBtn) copyBtn.addEventListener('click', copyUrl);
         })();
     </script>
 </body>
