@@ -5,30 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#020617">
     
-    <!-- SEO -->
-    <title>Album Kenangan Digital — Alfan Setiawan (XI TJKT 1) | SMP Negeri 4 Maluku Tengah</title>
-    <meta name="description" content="Album kenangan digital siswa SMP Negeri 4 Maluku Tengah. Kumpulan foto, kesan, dan pesan untuk guru dan teman seperjuangan. Karya Alfan Setiawan, XI TJKT 1, SMK Negeri 1 Maluku Tengah.">
+    <!-- ============ SEO ============ -->
+    <title>Album Kenangan Masa SMP — SMP Negeri 4 Maluku Tengah | oleh Alfan Setiawan</title>
+    <meta name="description" content="Album kenangan digital masa SMP Negeri 4 Maluku Tengah (2021–2024). Kumpulan foto, kesan, dan pesan untuk guru dan teman seperjuangan. Dipersembahkan oleh Alfan Setiawan, XI TJKT 1, SMK Negeri 1 Maluku Tengah.">
     <meta name="author" content="Alfan Setiawan">
-    <meta name="keywords" content="album kenangan, SMP Negeri 4 Maluku Tengah, kenangan sekolah, foto kelas, Alfan Setiawan">
+    <meta name="keywords" content="album kenangan, SMP Negeri 4 Maluku Tengah, kenangan sekolah, foto kelas, Alfan Setiawan, SMK Negeri 1 Maluku Tengah">
     
-    <!-- Open Graph -->
+    <!-- ============ Open Graph ============ -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Album Kenangan Digital — SMP Negeri 4 Maluku Tengah">
-    <meta property="og:description" content="Merawat kenangan masa putih-biru. Karya Alfan Setiawan (XI TJKT 1).">
+    <meta property="og:title" content="Album Kenangan Masa SMP — SMP Negeri 4 Maluku Tengah">
+    <meta property="og:description" content="Merawat kenangan masa putih-biru. Dipersembahkan oleh Alfan Setiawan (XI TJKT 1).">
     <meta property="og:image" content="https://i.ibb.co.com/93WhCnfS/1000472334.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:locale" content="id_ID">
-    <meta name="twitter:card" content="summary_large_image">
     
-    <!-- Favicon -->
+    <!-- ============ Twitter Card ============ -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Album Kenangan Masa SMP — SMP Negeri 4 Maluku Tengah">
+    <meta name="twitter:description" content="Merawat kenangan masa putih-biru. Karya Alfan Setiawan.">
+    <meta name="twitter:image" content="https://i.ibb.co.com/93WhCnfS/1000472334.jpg">
+    
+    <!-- ============ Favicon ============ -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📸</text></svg>">
     
-    <!-- Preconnect & Font -->
+    <!-- ============ JSON-LD ============ -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CreativeWork",
+        "name": "Album Kenangan Digital SMP Negeri 4 Maluku Tengah",
+        "author": {
+            "@type": "Person",
+            "name": "Alfan Setiawan",
+            "affiliation": "SMK Negeri 1 Maluku Tengah"
+        },
+        "about": "Album kenangan masa SMP 2021–2024",
+        "datePublished": "2025",
+        "inLanguage": "id-ID"
+    }
+    </script>
+    
+    <!-- ============ Preconnect & Font ============ -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://i.ibb.co.com">
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Orbitron:wght@700;900&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Orbitron:wght@700;900&display=swap">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
     
@@ -44,6 +66,8 @@
             --text-muted: #94a3b8;
             --border-color: rgba(255, 255, 255, 0.12);
             --border-glow: rgba(56, 189, 248, 0.35);
+            --success: #22c55e;
+            --error: #ef4444;
         }
 
         * {
@@ -66,9 +90,10 @@
         }
 
         body.splash-active { overflow: hidden; }
+        body.modal-open { overflow: hidden; }
 
         /* ============================================
-           SPLASH SCREEN — SIMPLE, ELEGANT & BERWARNA
+           SPLASH SCREEN
            ============================================ */
         #splashScreen {
             position: fixed;
@@ -116,12 +141,11 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 18px;
+            gap: 16px;
             padding: 0 24px;
             text-align: center;
         }
 
-        /* Icon */
         .splash-icon {
             width: 58px;
             height: 58px;
@@ -139,11 +163,8 @@
             box-shadow: 0 0 30px rgba(56, 189, 248, 0.2);
             margin-bottom: 4px;
         }
-        @keyframes iconIn {
-            to { opacity: 1; transform: scale(1); }
-        }
+        @keyframes iconIn { to { opacity: 1; transform: scale(1); } }
 
-        /* Label "ALBUM KENANGAN" */
         .splash-label {
             font-size: clamp(0.6rem, 1.6vw, 0.72rem);
             font-weight: 700;
@@ -162,25 +183,17 @@
                 labelIn 0.7s cubic-bezier(0.4, 0, 0.2, 1) 0.55s forwards,
                 labelShift 6s linear 1.2s infinite;
         }
-        @keyframes labelIn {
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes labelShift {
-            to { background-position: 300% 0; }
-        }
+        @keyframes labelIn { to { opacity: 1; transform: translateY(0); } }
+        @keyframes labelShift { to { background-position: 300% 0; } }
 
-        /* Garis pembatas atas */
         .splash-line-top {
             width: 0;
             height: 1px;
             background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.7), rgba(192, 132, 252, 0.7), transparent);
             animation: lineGrow 0.9s cubic-bezier(0.4, 0, 0.2, 1) 0.8s forwards;
         }
-        @keyframes lineGrow {
-            to { width: 90px; }
-        }
+        @keyframes lineGrow { to { width: 90px; } }
 
-        /* Nama */
         .splash-name {
             font-family: 'Orbitron', 'Plus Jakarta Sans', sans-serif;
             font-size: clamp(1.6rem, 5.5vw, 3rem);
@@ -192,7 +205,6 @@
             justify-content: center;
             min-height: 1.2em;
             margin: 0;
-            /* Glow lembut di parent, bukan per huruf */
             filter: drop-shadow(0 0 20px rgba(56, 189, 248, 0.25));
         }
 
@@ -210,18 +222,13 @@
                 letterFadeIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards,
                 gradientFlow 5s ease-in-out infinite;
         }
-        .splash-name .letter.space {
-            width: 0.35em;
-        }
-        @keyframes letterFadeIn {
-            to { opacity: 1; transform: translateY(0); }
-        }
+        .splash-name .letter.space { width: 0.35em; }
+        @keyframes letterFadeIn { to { opacity: 1; transform: translateY(0); } }
         @keyframes gradientFlow {
             0%, 100% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
         }
 
-        /* Garis pembatas bawah */
         .splash-line-bottom {
             width: 0;
             height: 1px;
@@ -229,11 +236,10 @@
             animation: lineGrow 0.9s cubic-bezier(0.4, 0, 0.2, 1) 1.5s forwards;
         }
 
-        /* Subtitle sekolah */
         .splash-subtitle {
             font-size: clamp(0.6rem, 1.5vw, 0.72rem);
             color: #94a3b8;
-            letter-spacing: 0.35em;
+            letter-spacing: 0.3em;
             text-transform: uppercase;
             font-weight: 500;
             opacity: 0;
@@ -241,11 +247,8 @@
             animation: subtitleIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) 1.75s forwards;
             padding: 0 20px;
         }
-        @keyframes subtitleIn {
-            to { opacity: 1; transform: translateY(0); }
-        }
+        @keyframes subtitleIn { to { opacity: 1; transform: translateY(0); } }
 
-        /* Tagline "MASA SMP • 2024" */
         .splash-tagline {
             display: inline-flex;
             align-items: center;
@@ -264,9 +267,7 @@
             box-shadow: 0 0 25px rgba(56, 189, 248, 0.15);
             margin-top: 4px;
         }
-        @keyframes taglineIn {
-            to { opacity: 1; transform: translateY(0) scale(1); }
-        }
+        @keyframes taglineIn { to { opacity: 1; transform: translateY(0) scale(1); } }
 
         .splash-tagline .dot {
             width: 5px;
@@ -289,7 +290,6 @@
             color: transparent;
         }
 
-        /* Loader */
         .splash-loader {
             width: min(200px, 55vw);
             height: 2px;
@@ -311,14 +311,9 @@
                 loadFill 1.2s cubic-bezier(0.65, 0, 0.35, 1) 2.15s forwards,
                 loaderShift 2s linear 3s infinite;
         }
-        @keyframes loadFill {
-            to { width: 100%; }
-        }
-        @keyframes loaderShift {
-            to { background-position: 200% 0; }
-        }
+        @keyframes loadFill { to { width: 100%; } }
+        @keyframes loaderShift { to { background-position: 200% 0; } }
 
-        /* Skip button */
         .splash-skip {
             position: absolute;
             bottom: 36px;
@@ -346,33 +341,19 @@
             border-color: rgba(56, 189, 248, 0.4);
             background: rgba(56, 189, 248, 0.08);
         }
-        @keyframes skipFade {
-            to { opacity: 1; transform: translateX(-50%) translateY(0); }
-        }
+        @keyframes skipFade { to { opacity: 1; transform: translateX(-50%) translateY(0); } }
 
-        /* Exit animation */
         #splashScreen.is-exiting .splash-content {
             animation: contentExit 0.55s cubic-bezier(0.4, 0, 0.2, 1) forwards;
         }
         @keyframes contentExit {
-            to {
-                transform: scale(1.05);
-                opacity: 0;
-            }
+            to { transform: scale(1.05); opacity: 0; }
         }
         #splashScreen.is-exiting .splash-bg,
         #splashScreen.is-exiting .splash-skip {
             animation: overlayExit 0.55s ease-out forwards;
         }
-        @keyframes overlayExit {
-            to { opacity: 0; }
-        }
-
-        @media (max-width: 768px) {
-            .splash-icon { width: 50px; height: 50px; font-size: 1.25rem; }
-            .splash-skip { bottom: 24px; font-size: 0.62rem; padding: 7px 14px; }
-            .splash-tagline { font-size: 0.68rem; padding: 7px 18px; letter-spacing: 0.25em; }
-        }
+        @keyframes overlayExit { to { opacity: 0; } }
 
         /* ============ SCROLL PROGRESS ============ */
         #scrollProgress {
@@ -388,7 +369,7 @@
             will-change: transform;
         }
 
-        /* ============ AURORA (2 blob saja, blur ringan) ============ */
+        /* ============ AURORA ============ */
         .aurora-bg {
             position: fixed;
             inset: 0;
@@ -459,18 +440,28 @@
         }
 
         .logo {
-            font-size: 1.05rem;
+            font-size: 1rem;
             font-weight: 800;
             color: var(--text-light);
             text-decoration: none;
             display: flex;
             align-items: center;
             gap: 10px;
+            min-width: 0;
         }
-        .logo i { color: var(--primary); font-size: 1.3rem; }
-        .logo span { background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .logo i { color: var(--primary); font-size: 1.3rem; flex-shrink: 0; }
+        .logo span {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .logo-sub { color: var(--text-muted); font-weight: 500; font-size: 0.85rem; }
 
-        .nav-links { display: flex; gap: 30px; list-style: none; }
+        .nav-links { display: flex; gap: 26px; list-style: none; }
         .nav-links a {
             color: var(--text-muted);
             text-decoration: none;
@@ -489,6 +480,11 @@
         }
         .nav-links a:hover { color: var(--primary); }
         .nav-links a:hover::after { width: 100%; }
+        .nav-links a:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 4px;
+            border-radius: 4px;
+        }
 
         .hamburger {
             display: none;
@@ -498,7 +494,9 @@
             font-size: 1.4rem;
             cursor: pointer;
             padding: 8px;
+            border-radius: 8px;
         }
+        .hamburger:focus-visible { outline: 2px solid var(--primary); }
 
         /* ============ HERO ============ */
         .hero {
@@ -547,19 +545,27 @@
             margin-bottom: 35px;
         }
 
-        .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+        .hero-btns { 
+            display: flex; 
+            gap: 14px; 
+            flex-wrap: wrap; 
+            justify-content: center;
+            align-items: center;
+        }
         .btn-primary, .btn-secondary {
-            padding: 14px 32px;
+            padding: 14px 28px;
             border-radius: 50px;
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 0.92rem;
             text-decoration: none;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, border-color 0.3s ease;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 9px;
             border: none;
             cursor: pointer;
+            font-family: inherit;
+            white-space: nowrap;
         }
         .btn-primary {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
@@ -572,7 +578,14 @@
             color: var(--text-light);
             border: 1px solid var(--border-color);
         }
-        .btn-secondary:hover { background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.25); transform: translateY(-3px); }
+        .btn-secondary:hover { 
+            background: rgba(255, 255, 255, 0.1); 
+            border-color: var(--border-glow);
+            color: var(--primary);
+            transform: translateY(-3px); 
+        }
+        .btn-primary:focus-visible,
+        .btn-secondary:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
 
         /* ============ STATS ============ */
         .stats-bar {
@@ -622,6 +635,91 @@
             font-size: 0.95rem;
         }
 
+        /* ============ ABOUT ============ */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+            align-items: center;
+        }
+        .about-text p {
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+        .about-text strong { color: var(--primary); font-weight: 700; }
+        .about-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 24px;
+        }
+        .about-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+        .about-meta-item i {
+            color: var(--secondary);
+            font-size: 1.05rem;
+            width: 20px;
+            text-align: center;
+        }
+        .about-meta-item strong { color: var(--text-light); }
+        .about-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 32px;
+            position: relative;
+            overflow: hidden;
+        }
+        .about-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.1), transparent 60%);
+            pointer-events: none;
+        }
+        .about-card-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+        .about-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 16px;
+            color: var(--text-light);
+        }
+        .about-card blockquote {
+            font-size: 0.92rem;
+            color: #cbd5e1;
+            line-height: 1.7;
+            font-style: italic;
+            border-left: 3px solid var(--primary);
+            padding-left: 16px;
+            margin-bottom: 16px;
+        }
+        .about-card-sign {
+            font-size: 0.82rem;
+            color: var(--secondary);
+            font-weight: 700;
+        }
+
+        @media (max-width: 900px) {
+            .about-grid { grid-template-columns: 1fr; gap: 24px; }
+        }
+
         /* ============ FILTER ============ */
         .filter-bar {
             display: flex;
@@ -649,6 +747,7 @@
             border-color: transparent;
             box-shadow: 0 5px 20px var(--primary-glow);
         }
+        .filter-btn:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
 
         /* ============ GALERI ============ */
         .galeri-grid {
@@ -681,6 +780,10 @@
             border-color: var(--border-glow);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 30px var(--primary-glow);
         }
+        .galeri-card:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 4px;
+        }
         .galeri-card.filtered-out {
             opacity: 0;
             transform: scale(0.85);
@@ -688,7 +791,8 @@
             visibility: hidden;
         }
         .img-container {
-            width: 100%; height: 240px;
+            width: 100%;
+            aspect-ratio: 4 / 3;
             overflow: hidden;
             position: relative;
             background: linear-gradient(135deg, rgba(56, 189, 248, 0.05), rgba(192, 132, 252, 0.05));
@@ -748,8 +852,258 @@
         }
         .quote-card i.quote-icon { font-size: 2rem; color: var(--primary); margin-bottom: 16px; }
         .quote-card p { font-size: 0.92rem; color: #cbd5e1; line-height: 1.7; margin-bottom: 22px; }
+        .quote-card p strong { color: var(--text-light); }
         .quote-author { font-size: 0.9rem; font-weight: 800; color: var(--secondary); display: flex; align-items: center; gap: 8px; }
         .quote-author i { font-size: 1rem; color: var(--accent); margin-bottom: 0; }
+
+        /* ============ SHARE SECTION ============ */
+        .share-wrapper {
+            max-width: 780px;
+            margin: 0 auto;
+        }
+
+        .share-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: 28px;
+            padding: 32px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .share-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(circle at 0% 0%, rgba(56, 189, 248, 0.08), transparent 50%),
+                radial-gradient(circle at 100% 100%, rgba(192, 132, 252, 0.08), transparent 50%);
+            pointer-events: none;
+        }
+
+        .share-card-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 28px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .share-icon-circle {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.25rem;
+            box-shadow: 0 8px 20px var(--primary-glow);
+            flex-shrink: 0;
+        }
+
+        .share-card-title h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 2px;
+        }
+
+        .share-card-title p {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+        }
+
+        .share-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .share-grid-btn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 16px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            cursor: pointer;
+            font-family: inherit;
+            text-align: left;
+            color: var(--text-light);
+            transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+                        background 0.25s ease,
+                        border-color 0.25s ease,
+                        box-shadow 0.25s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .share-grid-btn:hover {
+            transform: translateY(-3px);
+            border-color: var(--border-glow);
+            background: rgba(255, 255, 255, 0.07);
+        }
+
+        .share-grid-btn:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 3px;
+        }
+
+        .share-grid-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .share-btn-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.15rem;
+            color: white;
+            flex-shrink: 0;
+            transition: transform 0.25s ease;
+        }
+
+        .share-grid-btn:hover .share-btn-icon {
+            transform: scale(1.08) rotate(-4deg);
+        }
+
+        .share-btn-text {
+            flex: 1;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .share-btn-text strong {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-light);
+        }
+
+        .share-btn-text span {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .share-btn-arrow {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            opacity: 0.5;
+            transition: opacity 0.25s ease, transform 0.25s ease, color 0.25s ease;
+        }
+
+        .share-grid-btn:hover .share-btn-arrow {
+            opacity: 1;
+            color: var(--primary);
+            transform: translate(2px, -2px);
+        }
+
+        .share-grid-btn.wa .share-btn-icon {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+        }
+        .share-grid-btn.fb .share-btn-icon {
+            background: linear-gradient(135deg, #1877F2, #0a5dc2);
+        }
+        .share-grid-btn.tw .share-btn-icon {
+            background: linear-gradient(135deg, #1a1a1a, #000000);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .share-grid-btn.copy .share-btn-icon {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+
+        .share-grid-btn.wa:hover { border-color: rgba(37, 211, 102, 0.5); box-shadow: 0 10px 25px rgba(37, 211, 102, 0.15); }
+        .share-grid-btn.fb:hover { border-color: rgba(24, 119, 242, 0.5); box-shadow: 0 10px 25px rgba(24, 119, 242, 0.15); }
+        .share-grid-btn.tw:hover { border-color: rgba(255, 255, 255, 0.25); box-shadow: 0 10px 25px rgba(255, 255, 255, 0.08); }
+        .share-grid-btn.copy:hover { border-color: rgba(56, 189, 248, 0.5); box-shadow: 0 10px 25px rgba(56, 189, 248, 0.15); }
+
+        .share-url-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            background: rgba(0, 0, 0, 0.25);
+            border: 1px dashed var(--border-color);
+            border-radius: 14px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .share-url-box > i.fa-globe {
+            color: var(--primary);
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .share-url-text {
+            flex: 1;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-family: 'Courier New', monospace;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            min-width: 0;
+        }
+
+        .share-url-copy {
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            color: var(--primary);
+            width: 32px;
+            height: 32px;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            transition: background 0.25s ease, transform 0.2s ease;
+            flex-shrink: 0;
+            font-family: inherit;
+        }
+
+        .share-url-copy:hover {
+            background: rgba(56, 189, 248, 0.2);
+            transform: scale(1.08);
+        }
+
+        .share-url-copy:active {
+            transform: scale(0.95);
+        }
+
+        .share-url-copy:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+        }
+
+        @media (max-width: 600px) {
+            .share-card { padding: 22px 18px; border-radius: 22px; }
+            .share-grid { grid-template-columns: 1fr; }
+            .share-icon-circle { width: 46px; height: 46px; font-size: 1.1rem; }
+            .share-card-title h3 { font-size: 1.05rem; }
+            .share-card-title p { font-size: 0.78rem; }
+            .share-btn-text strong { font-size: 0.85rem; }
+            .share-btn-text span { font-size: 0.68rem; }
+            .share-url-text { font-size: 0.72rem; }
+        }
 
         /* ============ MUSIC PLAYER ============ */
         .music-player-container {
@@ -809,20 +1163,11 @@
             justify-content: center;
             transition: color 0.2s ease, background 0.2s ease, transform 0.15s ease;
         }
-        .control-btn:hover {
-            color: var(--primary);
-            background: rgba(56, 189, 248, 0.1);
-        }
-        .control-btn:active {
-            transform: scale(0.9);
-        }
-        .control-btn.is-muted {
-            color: #ef4444;
-            background: rgba(239, 68, 68, 0.15);
-        }
-        .control-btn.is-muted:hover {
-            background: rgba(239, 68, 68, 0.25);
-        }
+        .control-btn:hover { color: var(--primary); background: rgba(56, 189, 248, 0.1); }
+        .control-btn:active { transform: scale(0.9); }
+        .control-btn:focus-visible { outline: 2px solid var(--primary); }
+        .control-btn.is-muted { color: var(--error); background: rgba(239, 68, 68, 0.15); }
+        .control-btn.is-muted:hover { background: rgba(239, 68, 68, 0.25); }
 
         .play-btn {
             width: 42px; height: 42px;
@@ -836,6 +1181,7 @@
         }
         .play-btn:hover { transform: scale(1.08); }
         .play-btn:active { transform: scale(0.95); }
+        .play-btn:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
 
         .progress-container { display: flex; align-items: center; gap: 10px; }
         .time-text { font-size: 0.7rem; color: var(--text-muted); font-weight: 600; min-width: 32px; }
@@ -901,6 +1247,45 @@
         }
         .back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
         .back-to-top:hover { background: var(--primary); color: white; transform: translateY(-3px); }
+        .back-to-top:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
+
+        /* ============ TOAST ============ */
+        .toast-container {
+            position: fixed;
+            top: 90px;
+            right: 24px;
+            z-index: 3000;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            pointer-events: none;
+        }
+        .toast {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-glow);
+            border-radius: 14px;
+            padding: 14px 20px;
+            color: var(--text-light);
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+            transform: translateX(120%);
+            animation: toastIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            pointer-events: auto;
+            max-width: 340px;
+        }
+        .toast.success { border-color: rgba(34, 197, 94, 0.5); }
+        .toast.success i { color: var(--success); }
+        .toast.error { border-color: rgba(239, 68, 68, 0.5); }
+        .toast.error i { color: var(--error); }
+        .toast.info i { color: var(--primary); }
+        @keyframes toastIn { to { transform: translateX(0); } }
+        .toast.out { animation: toastOut 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+        @keyframes toastOut { to { transform: translateX(120%); opacity: 0; } }
 
         /* ============ MODAL ============ */
         .modal {
@@ -937,7 +1322,16 @@
         }
         .modal.show .modal-box { transform: scale(1); }
 
-        .modal-box img { max-width: 100%; max-height: 65vh; border-radius: 16px; object-fit: contain; background: rgba(0,0,0,0.3); }
+        .modal-box img {
+            max-width: 100%;
+            max-height: 65vh;
+            border-radius: 16px;
+            object-fit: contain;
+            background: rgba(0,0,0,0.3);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .modal-box img.loaded { opacity: 1; }
         .modal-desc { text-align: center; }
         .modal-desc h3 { font-size: 1.2rem; color: var(--text-light); }
         .modal-desc p { font-size: 0.85rem; color: var(--text-muted); margin-top: 4px; }
@@ -946,13 +1340,22 @@
             position: absolute;
             top: 20px; right: 25px;
             color: #fff;
-            font-size: 2rem;
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid var(--border-color);
+            font-size: 1.5rem;
             cursor: pointer;
-            transition: color 0.3s, transform 0.3s;
+            transition: color 0.3s, transform 0.3s, background 0.3s;
             line-height: 1;
             z-index: 10;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .close-btn:hover { color: var(--primary); transform: rotate(90deg); }
+        .close-btn:hover { color: white; background: var(--error); transform: rotate(90deg); }
+        .close-btn:focus-visible { outline: 2px solid var(--primary); }
 
         .modal-nav {
             position: absolute;
@@ -970,6 +1373,7 @@
             z-index: 10;
         }
         .modal-nav:hover { background: var(--primary); color: white; border-color: var(--primary); }
+        .modal-nav:focus-visible { outline: 2px solid var(--primary); }
         .modal-nav.prev { left: -20px; }
         .modal-nav.next { right: -20px; }
         @media (max-width: 768px) {
@@ -980,23 +1384,43 @@
         /* ============ FOOTER ============ */
         footer {
             text-align: center;
-            padding: 30px 20px;
+            padding: 40px 20px;
             border-top: 1px solid var(--border-color);
             color: var(--text-muted);
             font-size: 0.85rem;
             margin-top: 40px;
         }
         footer strong { color: var(--primary); }
+        footer .footer-tagline {
+            font-size: 0.78rem;
+            margin-top: 12px;
+            opacity: 0.7;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
 
         /* ============ RESPONSIVE ============ */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.2rem; }
+            .hero p { font-size: 0.95rem; }
+            .hero-btns { 
+                flex-direction: column;
+                width: 100%;
+                max-width: 320px;
+                gap: 10px;
+            }
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                justify-content: center;
+                padding: 13px 24px;
+            }
             .stats-bar { margin-top: 0; }
             .nav-links {
                 position: fixed;
                 top: 65px;
                 right: 0;
-                width: 220px;
+                width: 240px;
                 height: auto;
                 background: rgba(3, 7, 18, 0.98);
                 backdrop-filter: blur(20px);
@@ -1022,9 +1446,13 @@
             .nav-links a::after { display: none; }
             .hamburger { display: block; }
             .back-to-top { bottom: 130px; right: 16px; }
+            .logo { font-size: 0.9rem; }
+            .logo-sub { display: none; }
+            .toast-container { right: 16px; left: 16px; top: 80px; }
+            .toast { max-width: 100%; }
         }
 
-        /* ============ MATIKAN BACKDROP-FILTER DI DEVICE LEMAH ============ */
+        /* ============ DEVICE LEMAH ============ */
         @media (max-width: 1024px), (hover: none) {
             header,
             .stats-bar,
@@ -1034,17 +1462,23 @@
             .badge,
             .music-player-container,
             .back-to-top,
-            .modal {
+            .modal,
+            .about-card,
+            .share-card,
+            .toast {
                 backdrop-filter: none !important;
                 -webkit-backdrop-filter: none !important;
             }
             header { background: rgba(3, 7, 18, 0.95); }
             .stats-bar,
             .galeri-card,
-            .quote-card { background: rgba(15, 23, 42, 0.92); }
+            .quote-card,
+            .about-card,
+            .share-card { background: rgba(15, 23, 42, 0.92); }
             .music-player-container { background: rgba(15, 23, 42, 0.96); }
             .badge { background: rgba(56, 189, 248, 0.15); }
             .modal { background: rgba(3, 5, 12, 0.96); }
+            .toast { background: rgba(15, 23, 42, 0.98); }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -1059,7 +1493,7 @@
 </head>
 <body class="splash-active">
 
-    <!-- SPLASH SCREEN -->
+    <!-- ============ SPLASH SCREEN ============ -->
     <div id="splashScreen">
         <div class="splash-bg"></div>
 
@@ -1076,12 +1510,12 @@
 
             <div class="splash-line-bottom"></div>
 
-            <p class="splash-subtitle">XI TJKT 1 &bull; SMK Negeri 1 Maluku Tengah</p>
+            <p class="splash-subtitle">Masa SMP &bull; 2021 &mdash; 2024</p>
 
             <div class="splash-tagline">
                 <span class="dot"></span>
-                <span class="text-gradient">Masa SMP</span>
-                <span class="text-gradient">2024</span>
+                <span class="text-gradient">SMP Negeri 4</span>
+                <span class="text-gradient">Maluku Tengah</span>
                 <span class="dot"></span>
             </div>
 
@@ -1090,15 +1524,15 @@
             </div>
         </div>
 
-        <div class="splash-skip" id="splashSkip">
+        <div class="splash-skip" id="splashSkip" role="button" tabindex="0" aria-label="Lewati splash screen">
             <i class="fa-solid fa-forward"></i> Ketuk untuk lewati
         </div>
     </div>
 
-    <!-- SCROLL PROGRESS -->
+    <!-- ============ SCROLL PROGRESS ============ -->
     <div id="scrollProgress"></div>
 
-    <!-- AURORA (hanya 2 blob) -->
+    <!-- ============ AURORA ============ -->
     <div class="aurora-bg">
         <div class="aurora-blob blob-1"></div>
         <div class="aurora-blob blob-2"></div>
@@ -1107,23 +1541,26 @@
     <div class="cursor-glow" id="cursorGlow"></div>
     <canvas id="bgCanvas"></canvas>
 
-    <!-- HEADER -->
+    <!-- ============ HEADER ============ -->
     <header>
         <a href="#home" class="logo">
-            <i class="fa-solid fa-laptop-code"></i>
-            <span>Alfan Setiawan</span> | XI TJKT 1
+            <i class="fa-solid fa-camera-retro"></i>
+            <span>Album Kenangan</span>
+            <span class="logo-sub">&bull; Alfan Setiawan</span>
         </a>
         <ul class="nav-links" id="navLinks">
             <li><a href="#home">Beranda</a></li>
+            <li><a href="#tentang">Tentang</a></li>
             <li><a href="#galeri">Galeri</a></li>
             <li><a href="#pesan">Kesan & Pesan</a></li>
+            <li><a href="#bagikan">Bagikan</a></li>
         </ul>
-        <button class="hamburger" id="hamburger" aria-label="Menu">
+        <button class="hamburger" id="hamburger" aria-label="Buka menu navigasi" aria-expanded="false">
             <i class="fa-solid fa-bars"></i>
         </button>
     </header>
 
-    <!-- HERO -->
+    <!-- ============ HERO ============ -->
     <section class="hero" id="home">
         <div class="badge" data-aos="fade-down">
             <i class="fa-solid fa-wand-magic-sparkles"></i> Album Kenangan Digital
@@ -1136,11 +1573,12 @@
         </p>
         <div class="hero-btns" data-aos="fade-up" data-aos-delay="300">
             <a href="#galeri" class="btn-primary"><i class="fa-solid fa-images"></i> Jelajahi Foto</a>
+            <a href="#tentang" class="btn-secondary"><i class="fa-solid fa-circle-info"></i> Tentang Album</a>
             <a href="#pesan" class="btn-secondary"><i class="fa-solid fa-comment-dots"></i> Kesan & Pesan</a>
         </div>
     </section>
 
-    <!-- STATS -->
+    <!-- ============ STATS ============ -->
     <div class="stats-bar" data-aos="zoom-in">
         <div class="stat-item">
             <h2 data-count="15">0</h2>
@@ -1156,27 +1594,75 @@
         </div>
     </div>
 
-    <!-- GALERI -->
+    <!-- ============ TENTANG ============ -->
+    <section id="tentang">
+        <h2 class="section-title" data-aos="fade-up">Tentang <span>Album Ini</span></h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+            Sedikit cerita di balik album kenangan digital ini.
+        </p>
+
+        <div class="about-grid">
+            <div class="about-text" data-aos="fade-up" data-aos-delay="150">
+                <p>
+                    Album ini adalah <strong>kumpulan kenangan masa SMP</strong> saya di <strong>SMP Negeri 4 Maluku Tengah</strong> 
+                    dari tahun <strong>2021 hingga 2024</strong>. Setiap foto di dalamnya menyimpan cerita — 
+                    mulai dari apel pagi, kegiatan Pramuka, pentas seni budaya, hingga momen kebersamaan 
+                    yang sederhana namun tak terlupakan.
+                </p>
+                <p>
+                    Album ini saya susun ulang saat duduk di bangku <strong>SMK Negeri 1 Maluku Tengah</strong>, 
+                    kelas <strong>XI TJKT 1</strong>, sebagai wujud terima kasih kepada para guru, 
+                    teman seperjuangan, dan seluruh keluarga besar SMP Negeri 4 Maluku Tengah.
+                </p>
+                <div class="about-meta">
+                    <div class="about-meta-item">
+                        <i class="fa-solid fa-school"></i>
+                        <span><strong>SMP Negeri 4 Maluku Tengah</strong> &mdash; 2021 s.d. 2024</span>
+                    </div>
+                    <div class="about-meta-item">
+                        <i class="fa-solid fa-laptop-code"></i>
+                        <span>Dipersembahkan oleh <strong>Alfan Setiawan</strong> &mdash; XI TJKT 1</span>
+                    </div>
+                    <div class="about-meta-item">
+                        <i class="fa-solid fa-building-columns"></i>
+                        <span><strong>SMK Negeri 1 Maluku Tengah</strong></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="about-card-label">Kata Pengantar</div>
+                <h3>Untuk Semua yang Pernah Mengisi Masa SMP-ku</h3>
+                <blockquote>
+                    "Masa SMP mungkin hanya tiga tahun, tapi kenangannya cukup untuk menemani seumur hidup. 
+                    Terima kasih untuk setiap tawa, setiap pelajaran, dan setiap doa yang pernah kita bagi bersama."
+                </blockquote>
+                <div class="about-card-sign">— Alfan Setiawan</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ GALERI ============ -->
     <section id="galeri">
         <h2 class="section-title" data-aos="fade-up">Galeri <span>Momen Indah</span></h2>
         <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
             Potret jejak langkah keceriaan kita saat mengenakan seragam putih-biru. Ketuk foto untuk memperbesar.
         </p>
 
-        <div class="filter-bar" data-aos="fade-up" data-aos-delay="150">
-            <button class="filter-btn active" data-filter="all">Semua</button>
-            <button class="filter-btn" data-filter="pramuka">Pramuka</button>
-            <button class="filter-btn" data-filter="budaya">Seni Budaya</button>
-            <button class="filter-btn" data-filter="kelas">Kelas</button>
-            <button class="filter-btn" data-filter="acara">Acara</button>
-            <button class="filter-btn" data-filter="angkatan">Angkatan</button>
+        <div class="filter-bar" data-aos="fade-up" data-aos-delay="150" role="group" aria-label="Filter galeri">
+            <button class="filter-btn active" data-filter="all" aria-pressed="true">Semua</button>
+            <button class="filter-btn" data-filter="pramuka" aria-pressed="false">Pramuka</button>
+            <button class="filter-btn" data-filter="budaya" aria-pressed="false">Seni Budaya</button>
+            <button class="filter-btn" data-filter="kelas" aria-pressed="false">Kelas</button>
+            <button class="filter-btn" data-filter="acara" aria-pressed="false">Acara</button>
+            <button class="filter-btn" data-filter="angkatan" aria-pressed="false">Angkatan</button>
         </div>
 
         <div class="galeri-grid" id="galeriGrid">
 
-            <div class="galeri-card" data-cat="acara" data-aos="fade-up">
+            <div class="galeri-card" data-cat="acara" data-aos="fade-up" tabindex="0" role="button" aria-label="Buka foto: Pengarahan atau Apel di Lapangan">
                 <div class="img-container">
-                    <img loading="lazy" decoding="async" src="https://i.ibb.co.com/RGBK0q7m/IMG-20240805-WA0000.jpg" alt="Siswa-siswi SMP Negeri 4 Maluku Tengah duduk rapi saat apel pagi di lapangan sekolah">
+                    <img loading="lazy" decoding="async" width="400" height="300" src="https://i.ibb.co.com/RGBK0q7m/IMG-20240805-WA0000.jpg" alt="Siswa-siswi SMP Negeri 4 Maluku Tengah duduk rapi saat apel pagi di lapangan sekolah">
                 </div>
                 <div class="card-info">
                     <span class="card-cat">Acara</span>
@@ -1185,9 +1671,9 @@
                 </div>
             </div>
 
-            <div class="galeri-card" data-cat="kelas" data-aos="fade-up" data-aos-delay="50">
+            <div class="galeri-card" data-cat="kelas" data-aos="fade-up" data-aos-delay="50" tabindex="0" role="button" aria-label="Buka foto: Pose Bersama Teman Sekelas">
                 <div class="img-container">
-                    <img loading="lazy" decoding="async" src="https://i.ibb.co.com/RTCX8Wm9/IMG-20240812-WA0040.jpg" alt="Foto pose bersama teman sekelas dengan seragam putih-biru">
+                    <img loading="lazy" decoding="async" width="400" height="300" src="https://i.ibb.co.com/RTCX8Wm9/IMG-20240812-WA0040.jpg" alt="Foto pose bersama teman sekelas dengan seragam putih-biru">
                 </div>
                 <div class="card-info">
                     <span class="card-cat">Kelas</span>
@@ -1196,9 +1682,9 @@
                 </div>
             </div>
 
-            <div class="galeri-card" data-cat="pramuka" data-aos="fade-up" data-aos-delay="100">
+            <div class="galeri-card" data-cat="pramuka" data-aos="fade-up" data-aos-delay="100" tabindex="0" role="button" aria-label="Buka foto: Pramuka Bersama Pembina">
                 <div class="img-container">
-                    <img loading="lazy" decoding="async" src="https://i.ibb.co.com/VWXr5p7h/IMG-20240814-WA0004.jpg" alt="Anggota Pramuka bersama pembina di halaman sekolah">
+                    <img loading="lazy" decoding="async" width="400" height="300" src="https://i.ibb.co.com/VWXr5p7h/IMG-20240814-WA0004.jpg" alt="Anggota Pramuka bersama pembina di halaman sekolah">
                 </div>
                 <div class="card-info">
                     <span class="card-cat">Pramuka</span>
@@ -1207,9 +1693,9 @@
                 </div>
             </div>
 
-            <div class="galeri-card" data-cat="pramuka" data-aos="fade-up" data-aos-delay="150">
+            <div class="galeri-card" data-cat="pramuka" data-aos="fade-up" data-aos-delay="150" tabindex="0" role="button" aria-label="Buka foto: Pramuka di Bawah Tenda">
                 <div class="img-container">
-                    <img loading="lazy" decoding="async" src="https://i.ibb.co.com/C5S9KN2t/IMG-20240814-WA0005.jpg" alt="Kegiatan Pramuka di bawah tenda dan pohon rindang">
+                    <img loading="lazy" decoding="async" width="400" height="300" src="https://i.ibb.co.com/C5S9KN2t/IMG-20240814-WA0005.jpg" alt="Kegiatan Pramuka di bawah tenda dan pohon rindang">
                 </div>
                 <div class="card-info">
                     <span class="card-cat">Pramuka</span>
@@ -1218,9 +1704,9 @@
                 </div>
             </div>
 
-            <div class="galeri-card" data-cat="acara" data-aos="fade-up">
+            <div class="galeri-card" data-cat="acara" data-aos="fade-up" tabindex="0" role="button" aria-label="Buka foto: Acara Makan Bersama">
                 <div class="img-container">
-                    <img loading="lazy" decoding="async" src="https://i.ibb.co.com/0yMhPTLc/1000472330.jpg" alt="Siswa-siswi makan bersama dalam acara kebersamaan kelas">
+                    <img loading="lazy" decoding="async" width="400" height="300" src="https://i.ibb.co.com/0yMhPTLc/1000472330.jpg" alt="Siswa-siswi makan bersama dalam acara kebersamaan kelas">
                 </div>
                 <div class="card-info">
                     <span class="card-cat">Acara</span>
@@ -1229,9 +1715,9 @@
                 </div>
             </div>
 
-            <div class="galeri-card" data-cat="acara" data-aos="fade-up" data-aos-delay="100">
+            <div class="galeri-card" data-cat="acara" data-aos="fade-up" data-aos-delay="100" tabindex="0" role="button" aria-label="Buka foto: Kehangatan di Meja Makan">
                 <div class="img-container">
-                    <img loading="lazy" decoding="async" src="https://i.ibb.co.com/KzKpcBTM/1000472329.jpg" alt="Suasana hangat acara makan bersama siswa di sekolah">
+                    <img loading="lazy" decoding="async" width="400" height="300" src="https://i.ibb.co.com/KzKpcBTM/1000472329.jpg" alt="Suasana hangat acara makan bersama siswa di sekolah">
                 </div>
                 <div class="card-info">
                     <span class="card-cat">Acara</span>
@@ -1240,9 +1726,9 @@
                 </div>
             </div>
 
-            <div class="galeri-card" data-cat="budaya" data-aos="fade-up" data-aos-delay="150">
+            <div class="galeri-card" data-cat="budaya" data-aos="fade-up" data-aos-delay="150" tabindex="0" role="button" aria-label="Buka foto: Baju Adat Tradisional">
                 <div class="img-container">
-                    <img loading="lazy" decoding="async" src="https://i.ibb.co.com/dwPLSwFg/1000472328.jpg" alt="Siswa mengenakan baju adat tradisional dalam acara seni budaya">
+                    <img loading="lazy" decoding="async" width="400" height="300" src="https://i.ibb.co.com/dwPLSwFg/1000472328.jpg" alt="Siswa mengenakan baju adat tradisional dalam acara seni budaya">
                 </div>
                 <div class="card-info">
                     <span class="card-cat">Seni Budaya</span>
@@ -1251,9 +1737,9 @@
                 </div>
             </div>
 
-            <div class="galeri-card" data-cat="budaya" data-aos="fade-up">
+            <div class="galeri-card" data-cat="budaya" data-aos="fade-up" tabindex="0" role="button" aria-label="Buka foto: Pentas dan Busana Adat">
                 <div class="img-container">
-                    <img loading="lazy" decoding="async" src="https://i.ibb.co.com/0pqxwmLz/1000472327.jpg" alt="Penampilan siswa dengan busana adat dalam pentas seni budaya">
+                    <img loading="lazy" decoding="async" width="400" height="300" src="https://i.ibb.co.com/0pqxwmLz/1000472327.jpg" alt="Penampilan siswa dengan busana adat dalam pentas seni budaya">
                 </div>
                 <div class="card-info">
                     <span class="card-cat">Seni Budaya</span>
@@ -1262,9 +1748,9 @@
                 </div>
             </div>
 
-            <div class="galeri-card" data-cat="kelas" data-aos="fade-up" data-aos-delay="100">
+            <div class="galeri-card" data-cat="kelas" data-aos="fade-up" data-aos-delay="100" tabindex="0" role="button" aria-label="Buka foto: Ceria di Dalam Kelas">
                 <div class="img-container">
-                    <img loading="lazy" decoding="async" src="https://i.ibb.co.com/5WxjFD9G/1000472325.jpg" alt="Suasana ceria siswa di dalam kelas dengan seragam sekolah">
+                    <img loading="lazy" decoding="async" width="400" height="300" src="https://i.ibb.co.com/5WxjFD9G/1000472325.jpg" alt="Suasana ceria siswa di dalam kelas dengan seragam sekolah">
                 </div>
                 <div class="card-info">
                     <span class="card-cat">Kelas</span>
@@ -1273,9 +1759,9 @@
                 </div>
             </div>
 
-            <div class="galeri-card" data-cat="kelas" data-aos="fade-up" data-aos-delay="150">
+            <div class="galeri-card" data-cat="kelas" data-aos="fade-up" data-aos-delay="150" tabindex="0" role="button" aria-label="Buka foto: Kumpul dan Bercanda di Belakang Kelas">
                 <div class="img-container">
-                    <img loading="lazy" decoding="async" src="https://i.ibb.co.com/9m69FD7r/1000472323.jpg" alt="Siswa berkumpul dan bercanda di belakang kelas">
+                    <img loading="lazy" decoding="async" width="400" height="300" src="https://i.ibb.co.com/9m69FD7r/1000472323.jpg" alt="Siswa berkumpul dan bercanda di belakang kelas">
                 </div>
                 <div class="card-info">
                     <span class="card-cat">Kelas</span>
@@ -1284,9 +1770,9 @@
                 </div>
             </div>
 
-            <div class="galeri-card" data-cat="kelas" data-aos="fade-up">
+            <div class="galeri-card" data-cat="kelas" data-aos="fade-up" tabindex="0" role="button" aria-label="Buka foto: Lesehan Santai di Teras">
                 <div class="img-container">
-                    <img loading="lazy" decoding="async" src="https://i.ibb.co.com/4nfSpG6r/1000472322.jpg" alt="Siswa lesehan santai di teras sekolah saat jam istirahat">
+                    <img loading="lazy" decoding="async" width="400" height="300" src="https://i.ibb.co.com/4nfSpG6r/1000472322.jpg" alt="Siswa lesehan santai di teras sekolah saat jam istirahat">
                 </div>
                 <div class="card-info">
                     <span class="card-cat">Kelas</span>
@@ -1295,9 +1781,9 @@
                 </div>
             </div>
 
-            <div class="galeri-card" data-cat="acara" data-aos="fade-up" data-aos-delay="100">
+            <div class="galeri-card" data-cat="acara" data-aos="fade-up" data-aos-delay="100" tabindex="0" role="button" aria-label="Buka foto: Makan Bersama di Teras Kelas">
                 <div class="img-container">
-                    <img loading="lazy" decoding="async" src="https://i.ibb.co.com/WWLtMLGx/1000472321.jpg" alt="Suasana syukuran dan makan bersama di teras kelas">
+                    <img loading="lazy" decoding="async" width="400" height="300" src="https://i.ibb.co.com/WWLtMLGx/1000472321.jpg" alt="Suasana syukuran dan makan bersama di teras kelas">
                 </div>
                 <div class="card-info">
                     <span class="card-cat">Acara</span>
@@ -1306,9 +1792,9 @@
                 </div>
             </div>
 
-            <div class="galeri-card" data-cat="angkatan" data-aos="fade-up" data-aos-delay="150">
+            <div class="galeri-card" data-cat="angkatan" data-aos="fade-up" data-aos-delay="150" tabindex="0" role="button" aria-label="Buka foto: Angkatan Lengkap di Lapangan">
                 <div class="img-container">
-                    <img loading="lazy" decoding="async" src="https://i.ibb.co.com/93WhCnfS/1000472334.jpg" alt="Foto lengkap seluruh siswa-siswi satu angkatan di lapangan sekolah">
+                    <img loading="lazy" decoding="async" width="400" height="300" src="https://i.ibb.co.com/93WhCnfS/1000472334.jpg" alt="Foto lengkap seluruh siswa-siswi satu angkatan di lapangan sekolah">
                 </div>
                 <div class="card-info">
                     <span class="card-cat">Angkatan</span>
@@ -1317,9 +1803,9 @@
                 </div>
             </div>
 
-            <div class="galeri-card" data-cat="angkatan" data-aos="fade-up">
+            <div class="galeri-card" data-cat="angkatan" data-aos="fade-up" tabindex="0" role="button" aria-label="Buka foto: Siswa Putra Satu Angkatan">
                 <div class="img-container">
-                    <img loading="lazy" decoding="async" src="https://i.ibb.co.com/qFsmXH9R/1000472332.jpg" alt="Foto bersama siswa putra satu angkatan dengan seragam putih-biru">
+                    <img loading="lazy" decoding="async" width="400" height="300" src="https://i.ibb.co.com/qFsmXH9R/1000472332.jpg" alt="Foto bersama siswa putra satu angkatan dengan seragam putih-biru">
                 </div>
                 <div class="card-info">
                     <span class="card-cat">Angkatan</span>
@@ -1328,9 +1814,9 @@
                 </div>
             </div>
 
-            <div class="galeri-card" data-cat="acara" data-aos="fade-up" data-aos-delay="100">
+            <div class="galeri-card" data-cat="acara" data-aos="fade-up" data-aos-delay="100" tabindex="0" role="button" aria-label="Buka foto: Perpisahan Bersama Guru">
                 <div class="img-container">
-                    <img loading="lazy" decoding="async" src="https://i.ibb.co.com/Y4Sn35sq/IMG-20250602-WA0023.jpg" alt="Momen perpisahan dan kelulusan siswa bersama bapak ibu guru">
+                    <img loading="lazy" decoding="async" width="400" height="300" src="https://i.ibb.co.com/Y4Sn35sq/IMG-20250602-WA0023.jpg" alt="Momen perpisahan dan kelulusan siswa bersama bapak ibu guru">
                 </div>
                 <div class="card-info">
                     <span class="card-cat">Acara</span>
@@ -1342,7 +1828,7 @@
         </div>
     </section>
 
-    <!-- KESAN & PESAN -->
+    <!-- ============ KESAN & PESAN ============ -->
     <section id="pesan">
         <h2 class="section-title" data-aos="fade-up">Ungkapan Hati & <span>Apresiasi</span></h2>
         <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
@@ -1373,12 +1859,88 @@
         </div>
     </section>
 
-    <!-- BACK TO TOP -->
+    <!-- ============ BAGIKAN ============ -->
+    <section id="bagikan">
+        <h2 class="section-title" data-aos="fade-up">Bagikan <span>Album Ini</span></h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+            Bagikan kenangan indah ini kepada teman-teman, guru, dan keluarga. Biarkan mereka juga merasakan hangatnya masa putih-biru.
+        </p>
+
+        <div class="share-wrapper" data-aos="fade-up" data-aos-delay="150">
+            <div class="share-card">
+                <div class="share-card-header">
+                    <div class="share-icon-circle">
+                        <i class="fa-solid fa-share-nodes"></i>
+                    </div>
+                    <div class="share-card-title">
+                        <h3>Sebarkan Kenangan</h3>
+                        <p>Pilih platform favoritmu untuk berbagi album ini</p>
+                    </div>
+                </div>
+
+                <div class="share-grid">
+                    <button class="share-grid-btn wa" id="shareWa" aria-label="Bagikan ke WhatsApp">
+                        <div class="share-btn-icon">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </div>
+                        <div class="share-btn-text">
+                            <strong>WhatsApp</strong>
+                            <span>Kirim ke chat</span>
+                        </div>
+                        <i class="fa-solid fa-arrow-up-right-from-square share-btn-arrow"></i>
+                    </button>
+
+                    <button class="share-grid-btn fb" id="shareFb" aria-label="Bagikan ke Facebook">
+                        <div class="share-btn-icon">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </div>
+                        <div class="share-btn-text">
+                            <strong>Facebook</strong>
+                            <span>Posting ke timeline</span>
+                        </div>
+                        <i class="fa-solid fa-arrow-up-right-from-square share-btn-arrow"></i>
+                    </button>
+
+                    <button class="share-grid-btn tw" id="shareTw" aria-label="Bagikan ke X/Twitter">
+                        <div class="share-btn-icon">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </div>
+                        <div class="share-btn-text">
+                            <strong>X / Twitter</strong>
+                            <span>Bagikan ke followers</span>
+                        </div>
+                        <i class="fa-solid fa-arrow-up-right-from-square share-btn-arrow"></i>
+                    </button>
+
+                    <button class="share-grid-btn copy" id="shareCopy" aria-label="Salin tautan">
+                        <div class="share-btn-icon">
+                            <i class="fa-solid fa-link"></i>
+                        </div>
+                        <div class="share-btn-text">
+                            <strong>Salin Tautan</strong>
+                            <span>Copy URL ke clipboard</span>
+                        </div>
+                        <i class="fa-solid fa-copy share-btn-arrow"></i>
+                    </button>
+                </div>
+
+                <div class="share-url-box">
+                    <i class="fa-solid fa-globe"></i>
+                    <span class="share-url-text" id="shareUrlText">Memuat URL...</span>
+                    <button class="share-url-copy" id="shareUrlCopyBtn" aria-label="Salin URL">
+                        <i class="fa-solid fa-copy"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ BACK TO TOP ============ -->
     <button class="back-to-top" id="backToTop" aria-label="Kembali ke atas">
         <i class="fa-solid fa-arrow-up"></i>
     </button>
 
-    <!-- MUSIC PLAYER -->
+    <!-- ============ MUSIC PLAYER ============ -->
     <div class="music-player-container" id="musicPlayer">
         <div class="music-main-row">
             <div class="music-info">
@@ -1387,15 +1949,15 @@
                 </div>
                 <div class="music-details">
                     <h4 id="songTitle">Kisah Kasih di Sekolah</h4>
-                    <p id="songSub">Lagu Kenangan Masa SMP</p>
+                    <p id="songSub">Ketuk tombol play untuk memutar</p>
                 </div>
             </div>
 
             <div class="music-controls">
-                <button class="control-btn" id="muteBtn" aria-label="Mute / Unmute" title="Klik untuk mute, klik lagi untuk unmute">
+                <button class="control-btn" id="muteBtn" aria-label="Bisukan atau nyalakan suara" title="Klik untuk mute, klik lagi untuk unmute">
                     <i class="fa-solid fa-volume-high" id="muteIcon"></i>
                 </button>
-                <button class="play-btn" id="playBtn" aria-label="Play/Pause">
+                <button class="play-btn" id="playBtn" aria-label="Putar atau jeda musik">
                     <i class="fa-solid fa-play" id="playIcon"></i>
                 </button>
             </div>
@@ -1403,21 +1965,22 @@
 
         <div class="progress-container">
             <span class="time-text" id="currentTime">0:00</span>
-            <div class="progress-bar-bg" id="progressBg">
+            <div class="progress-bar-bg" id="progressBg" role="slider" aria-label="Progres lagu" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0">
                 <div class="progress-bar-fill" id="progressBarFill"></div>
             </div>
             <span class="time-text" id="durationTime">0:00</span>
         </div>
     </div>
 
-    <!-- AUDIO -->
+    <!-- ============ AUDIO ============ -->
     <audio id="bgMusic" loop preload="metadata">
         <source src="kisah kasih di sekolah.mp3" type="audio/mpeg">
+        Browser Anda tidak mendukung elemen audio.
     </audio>
 
-    <!-- MODAL -->
+    <!-- ============ MODAL ============ -->
     <div class="modal" id="photoModal" role="dialog" aria-modal="true" aria-label="Pratinjau foto">
-        <span class="close-btn" id="closeBtn" role="button" aria-label="Tutup">&times;</span>
+        <button class="close-btn" id="closeBtn" aria-label="Tutup pratinjau">&times;</button>
         <div class="modal-box">
             <img id="modalImg" src="" alt="Pratinjau foto">
             <div class="modal-desc">
@@ -1429,11 +1992,17 @@
         <button class="modal-nav next" id="nextBtn" aria-label="Foto berikutnya"><i class="fa-solid fa-chevron-right"></i></button>
     </div>
 
-    <!-- FOOTER -->
+    <!-- ============ TOAST CONTAINER ============ -->
+    <div class="toast-container" id="toastContainer" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- ============ FOOTER ============ -->
     <footer>
-        <p>Dibuat Oleh: <strong>Alfan Setiawan</strong> | Kelas <strong>XI TJKT 1</strong></p>
+        <p>Dipersembahkan oleh <strong>Alfan Setiawan</strong> &bull; Kelas <strong>XI TJKT 1</strong></p>
         <p>Siswa <strong>SMK Negeri 1 Maluku Tengah</strong></p>
-        <p style="margin-top: 8px; opacity: 0.7;">&copy; 2025 SMP Negeri 4 Maluku Tengah. Merawat Kenangan Masa Putih-Biru.</p>
+        <p class="footer-tagline">
+            Album kenangan masa SMP (2021–2024) di SMP Negeri 4 Maluku Tengah.
+            &copy; 2025 &mdash; Merawat Kenangan Masa Putih-Biru.
+        </p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -1442,14 +2011,48 @@
         // UTIL
         // ============================================
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const isTouch = window.matchMedia('(pointer: coarse)').matches;
 
         // ============================================
-        // SPLASH SCREEN
+        // TOAST
+        // ============================================
+        const toastContainer = document.getElementById('toastContainer');
+        function showToast(message, type = 'info', duration = 3000) {
+            const icons = {
+                success: 'fa-circle-check',
+                error: 'fa-circle-exclamation',
+                info: 'fa-circle-info'
+            };
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.innerHTML = `<i class="fa-solid ${icons[type]}"></i><span>${message}</span>`;
+            toastContainer.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.classList.add('out');
+                setTimeout(() => toast.remove(), 350);
+            }, duration);
+        }
+
+        // ============================================
+        // SPLASH SCREEN — SELALU MUNCUL SETIAP BUKA WEB
         // ============================================
         (function initSplash() {
             const splash = document.getElementById('splashScreen');
             const nameEl = document.getElementById('splashName');
             const skipBtn = document.getElementById('splashSkip');
+
+            function initAOS() {
+                if (window.AOS && !window._aosInit) {
+                    window._aosInit = true;
+                    AOS.init({ 
+                        once: true, 
+                        duration: 700, 
+                        easing: 'ease-out-cubic',
+                        disable: prefersReducedMotion
+                    });
+                }
+            }
 
             const fullName = 'ALFAN SETIAWAN';
             const delayStart = 1.1;
@@ -1467,18 +2070,6 @@
             const SPLASH_DURATION = 3500;
             let autoCloseTimer = null;
 
-            function initAOS() {
-                if (window.AOS && !window._aosInit) {
-                    window._aosInit = true;
-                    AOS.init({ 
-                        once: true, 
-                        duration: 700, 
-                        easing: 'ease-out-cubic',
-                        disable: prefersReducedMotion
-                    });
-                }
-            }
-
             function closeSplash(instant = false) {
                 if (closed) return;
                 closed = true;
@@ -1490,7 +2081,6 @@
                     splash.classList.add('is-hidden');
                     document.body.classList.remove('splash-active');
                     initAOS();
-                    if (window._tryAutoplayMusic) window._tryAutoplayMusic();
                 }, instant ? 0 : 450);
 
                 setTimeout(() => {
@@ -1509,21 +2099,29 @@
                 closeSplash(true);
             }
             skipBtn.addEventListener('click', handleSkip);
+            skipBtn.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') handleSkip(e);
+            });
             splash.addEventListener('click', handleSkip);
-            document.addEventListener('keydown', handleSkip, { once: true });
+            document.addEventListener('keydown', function onKey(e) {
+                if (e.key === 'Escape') {
+                    closeSplash(true);
+                    document.removeEventListener('keydown', onKey);
+                }
+            });
         })();
 
         // ============ CURSOR GLOW ============
         (function initCursor() {
             const cursorGlow = document.getElementById('cursorGlow');
-            if (!cursorGlow || window.matchMedia('(pointer: coarse)').matches) return;
+            if (!cursorGlow || isTouch) return;
 
             let mouseX = 0, mouseY = 0, cursorRaf = false;
             let lastMove = 0;
 
             window.addEventListener('mousemove', (e) => {
                 const now = performance.now();
-                if (now - lastMove < 32) return;  // throttle 30fps
+                if (now - lastMove < 32) return;
                 lastMove = now;
                 mouseX = e.clientX - 200;
                 mouseY = e.clientY - 200;
@@ -1537,7 +2135,7 @@
             }, { passive: true });
         })();
 
-        // ============ CANVAS PARTICLES — OPTIMIZED ============
+        // ============ CANVAS PARTICLES ============
         (function initCanvas() {
             const canvas = document.getElementById('bgCanvas');
             const ctx = canvas.getContext('2d', { alpha: true });
@@ -1598,7 +2196,6 @@
                 animFrameId = requestAnimationFrame(animateCanvas);
                 if (now - lastFrame < FRAME_INTERVAL) return;
                 lastFrame = now;
-
                 ctx.clearRect(0, 0, W, H);
                 for (const p of particles) { p.update(); p.draw(); }
             }
@@ -1657,9 +2254,15 @@
         // ============ HAMBURGER ============
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
-        hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+        hamburger.addEventListener('click', () => {
+            const isOpen = navLinks.classList.toggle('open');
+            hamburger.setAttribute('aria-expanded', isOpen);
+        });
         navLinks.querySelectorAll('a').forEach(a => {
-            a.addEventListener('click', () => navLinks.classList.remove('open'));
+            a.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+                hamburger.setAttribute('aria-expanded', 'false');
+            });
         });
 
         // ============ FILTER ============
@@ -1668,8 +2271,12 @@
 
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
-                filterBtns.forEach(b => b.classList.remove('active'));
+                filterBtns.forEach(b => {
+                    b.classList.remove('active');
+                    b.setAttribute('aria-pressed', 'false');
+                });
                 btn.classList.add('active');
+                btn.setAttribute('aria-pressed', 'true');
                 const filter = btn.dataset.filter;
 
                 galeriCards.forEach(card => {
@@ -1713,7 +2320,15 @@
             });
 
             card.addEventListener('click', (e) => {
-                if (e.pointerType === 'mouse') {
+                if (e.pointerType === 'mouse' || e.pointerType === undefined) {
+                    currentCardIndex = index;
+                    openModal(card);
+                }
+            });
+
+            card.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
                     currentCardIndex = index;
                     openModal(card);
                 }
@@ -1731,24 +2346,45 @@
         const modalImg = document.getElementById('modalImg');
         const modalTitle = document.getElementById('modalTitle');
         const modalSub = document.getElementById('modalSub');
+        let lastFocusedElement = null;
 
         function openModal(cardElement) {
             if (!cardElement) return;
+            lastFocusedElement = document.activeElement;
+            
+            modalImg.classList.remove('loaded');
             modalImg.src = cardElement.querySelector('img').src;
             modalImg.alt = cardElement.querySelector('img').alt;
             modalTitle.textContent = cardElement.querySelector('h3').textContent;
             modalSub.textContent = cardElement.querySelector('p').textContent;
             modal.classList.add('show');
-            document.body.style.overflow = 'hidden';
+            document.body.classList.add('modal-open');
+
+            if (modalImg.complete) {
+                modalImg.classList.add('loaded');
+            } else {
+                modalImg.addEventListener('load', () => modalImg.classList.add('loaded'), { once: true });
+            }
+
+            setTimeout(() => document.getElementById('closeBtn').focus(), 100);
         }
 
         function closeModal() {
             modal.classList.remove('show');
-            document.body.style.overflow = '';
+            document.body.classList.remove('modal-open');
+            if (lastFocusedElement && lastFocusedElement.focus) {
+                lastFocusedElement.focus();
+            }
+        }
+
+        function getVisibleCards() {
+            return Array.from(cards).filter(c => 
+                !c.classList.contains('filtered-out') && c.style.display !== 'none'
+            );
         }
 
         function navigateModal(dir) {
-            const visibleCards = Array.from(cards).filter(c => !c.classList.contains('filtered-out') && c.style.display !== 'none');
+            const visibleCards = getVisibleCards();
             if (!visibleCards.length) return;
             const currentCard = cards[currentCardIndex];
             let idx = visibleCards.indexOf(currentCard);
@@ -1771,6 +2407,19 @@
             if (e.key === 'Escape') closeModal();
             else if (e.key === 'ArrowLeft') navigateModal(-1);
             else if (e.key === 'ArrowRight') navigateModal(1);
+            else if (e.key === 'Tab') {
+                const focusable = modal.querySelectorAll('button, [tabindex]:not([tabindex="-1"])');
+                if (!focusable.length) return;
+                const first = focusable[0];
+                const last = focusable[focusable.length - 1];
+                if (e.shiftKey && document.activeElement === first) {
+                    e.preventDefault();
+                    last.focus();
+                } else if (!e.shiftKey && document.activeElement === last) {
+                    e.preventDefault();
+                    first.focus();
+                }
+            }
         });
 
         let modalTouchX = 0;
@@ -1798,6 +2447,7 @@
             const songSub = document.getElementById('songSub');
 
             let lastVolume = 1;
+            let hasError = false;
 
             function setPlaying(isPlaying) {
                 playIcon.className = isPlaying ? 'fa-solid fa-pause' : 'fa-solid fa-play';
@@ -1838,38 +2488,36 @@
             });
 
             function toggleMusic() {
+                if (hasError) {
+                    showToast('File musik tidak ditemukan. Letakkan "kisah kasih di sekolah.mp3" di folder yang sama.', 'error', 5000);
+                    return;
+                }
                 if (music.paused) {
-                    music.play().then(() => setPlaying(true)).catch(() => {});
+                    music.play()
+                        .then(() => {
+                            setPlaying(true);
+                            songSub.textContent = 'Sedang diputar — Lagu Kenangan Masa SMP';
+                        })
+                        .catch(() => {
+                            showToast('Tidak dapat memutar musik. Cek file MP3 kamu.', 'error');
+                        });
                 } else {
                     music.pause();
                     setPlaying(false);
+                    songSub.textContent = 'Dijeda — Ketuk play untuk lanjut';
                 }
             }
             playBtn.addEventListener('click', toggleMusic);
             music.addEventListener('play', () => setPlaying(true));
             music.addEventListener('pause', () => setPlaying(false));
 
-            function tryAutoplay() {
-                const p = music.play();
-                if (p && typeof p.then === 'function') {
-                    p.then(() => setPlaying(true)).catch(() => {});
-                }
-            }
-            window._tryAutoplayMusic = tryAutoplay;
-
-            const enableAudio = () => {
-                if (music.paused) tryAutoplay();
-                window.removeEventListener('click', enableAudio);
-                window.removeEventListener('touchstart', enableAudio);
-            };
-            window.addEventListener('click', enableAudio);
-            window.addEventListener('touchstart', enableAudio);
-
             music.addEventListener('error', () => {
+                hasError = true;
                 musicPlayer.classList.add('error');
                 songTitle.textContent = 'Audio tidak ditemukan';
                 songSub.textContent = 'Letakkan file MP3 di folder yang sama';
                 playIcon.className = 'fa-solid fa-triangle-exclamation';
+                showToast('File "kisah kasih di sekolah.mp3" tidak ditemukan.', 'error', 5000);
             });
 
             function formatTime(sec) {
@@ -1887,6 +2535,7 @@
                         const pct = music.currentTime / music.duration;
                         progressBarFill.style.transform = `scaleX(${pct})`;
                         document.getElementById('currentTime').textContent = formatTime(music.currentTime);
+                        progressBg.setAttribute('aria-valuenow', Math.round(pct * 100));
                         progressRaf = false;
                     });
                 }
@@ -1905,6 +2554,14 @@
                 }
             }
             progressBg.addEventListener('click', setSeek);
+            progressBg.addEventListener('keydown', (e) => {
+                if (!music.duration) return;
+                if (e.key === 'ArrowRight') {
+                    music.currentTime = Math.min(music.duration, music.currentTime + 5);
+                } else if (e.key === 'ArrowLeft') {
+                    music.currentTime = Math.max(0, music.currentTime - 5);
+                }
+            });
 
             updateMuteIcon();
         })();
@@ -1936,6 +2593,54 @@
                 });
             }, { threshold: 0.5 });
             statNums.forEach(el => countObserver.observe(el));
+        })();
+
+        // ============ SHARE BUTTONS ============
+        (function initShare() {
+            const shareUrl = window.location.href;
+            const shareText = 'Lihat album kenangan masa SMP-ku! Karya Alfan Setiawan (XI TJKT 1).';
+
+            const urlTextEl = document.getElementById('shareUrlText');
+            if (urlTextEl) urlTextEl.textContent = shareUrl;
+
+            document.getElementById('shareWa').addEventListener('click', () => {
+                const url = `https://wa.me/?text=${encodeURIComponent(shareText + ' ' + shareUrl)}`;
+                window.open(url, '_blank', 'noopener');
+            });
+
+            document.getElementById('shareFb').addEventListener('click', () => {
+                const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
+                window.open(url, '_blank', 'noopener');
+            });
+
+            document.getElementById('shareTw').addEventListener('click', () => {
+                const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
+                window.open(url, '_blank', 'noopener');
+            });
+
+            async function copyUrl() {
+                try {
+                    await navigator.clipboard.writeText(shareUrl);
+                    showToast('Tautan berhasil disalin!', 'success');
+                } catch (err) {
+                    const temp = document.createElement('input');
+                    temp.value = shareUrl;
+                    document.body.appendChild(temp);
+                    temp.select();
+                    try {
+                        document.execCommand('copy');
+                        showToast('Tautan berhasil disalin!', 'success');
+                    } catch (e) {
+                        showToast('Gagal menyalin tautan', 'error');
+                    }
+                    temp.remove();
+                }
+            }
+
+            document.getElementById('shareCopy').addEventListener('click', copyUrl);
+
+            const copyBtn = document.getElementById('shareUrlCopyBtn');
+            if (copyBtn) copyBtn.addEventListener('click', copyUrl);
         })();
     </script>
 </body>
